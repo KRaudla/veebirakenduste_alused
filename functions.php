@@ -7,8 +7,8 @@ function showTime(){
     if ($time>=17){
         echo "Aeg on koju minna!<br>";
     }else{
-        echo "Pead veel kannatama!<br>";    
-    }    
+        echo "Pead veel kannatama!<br>";
+    }
 }
 
 function home(){
@@ -24,8 +24,25 @@ function getVisitorIp(){
     // kui fail avanes
     fwrite($file,$visitor."\n");
         echo "Külastate saiti aadressilt --->".$ip."<br>";
-        echo "Teie User-Agent on ---> ".$agent;
+        echo "Teie User-Agent on ---> ".$agent."<br>";
     fclose($file);
-    
+
+}
+function counter(){//loome counteri
+    $file_name = "count.txt";
+    if (!file_exists($file_name)){
+      $file = fopen($file_name,"w") or die("Can´t open");
+      $count = 1;//algväärtus
+      fwrite($file,$count);
+      echo "Õnnitleme, olete külastaja nr ".$count;
+      fclose($file);
+    }else{
+      $file = fopen($file_name,"r+") or die("Can´t open");//read ainult loeb, r+ annab ka lugemisõiguse juurde
+      $count =file_get_contents($file_name)+1;
+      fwrite($file,$count);
+      echo "Olete külastaja nr ".$count;
+      fclose($file);
+    }
+
 }
 ?>

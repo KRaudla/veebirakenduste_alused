@@ -1,0 +1,14 @@
+AuthType Basic
+AuthName "protected"
+AuthUserFile C:\wamp\www\veebirakenduste_alused\.htpasswd
+#siin ütleme user faili ja kus asub. vaja on absolute pathi + faili nime, .htpasswd
+#absolute pathi saame tips.php failist, prindime välja -> echo realpath(dirname(__FILE__))
+Require valid-user
+<files "*.txt">
+deny from all
+</files>
+#http://www.htaccesstools.com/
+#http://www.htaccesstools.com/htpasswd-generator/
+#user
+#Passw0rd
+#salasõna räsi: user:$apr1$krnDHc7E$NjRA4oCEe.wfhfGn7jGYI.
